@@ -5,8 +5,13 @@
 }
 
 header {
-    background-color: gray;
+    display: block;
+    margin: auto;
+    background-color: coral;
+    text-align: center;
+    color: white;
     justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body{
@@ -21,4 +26,12 @@ body{
 }
 footer {
     background-color: gray;
+}
+
+h2 {
+
+    background-color: blue;
+    text-align: center;
+    color: white;
+
 }

@@ -4,8 +4,9 @@ from datetime import datetime
 import getpass
 
 def index(request):
+    usuario=getpass.getuser
     context = {
-        'nombre_usuario': {getpass.getuser},
+        'nombre_usuario': usuario,
         'fecha': datetime.now(),
         'es_instructor': True,
     }
