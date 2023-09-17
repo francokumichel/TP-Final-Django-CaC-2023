@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+{%endblock%}
+
+{% block title %}Billetra GP15{% endblock %}
+{% block section_title %}{% endblock %}
+{% block content %}
+    <h2>Medios de Pago</h2>
+    {% filter lower %}
+    <p>Día de la fecha: {{ fecha }}</p>
+    <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
+    {% endfilter %}
+
+
+
+{% endblock %}

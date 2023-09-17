@@ -10,8 +10,49 @@
 {% block content %}
     <h2>Bienvenido a la Billetra Personal</h2>
     {% filter lower %}
-    <p>Día de la fecha: {{ fecha }}</p>
-    <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
+    <div class="container text-center">
+        <div class="row align-items-start estilo_1">
+          <div class="col">
+            <p>Fecha: {{ fecha }}</p>
+          </div>
+          <div class="col">
+            <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
+          </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col">
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <p class="card-text">Totales en pesos de gastos</p>
+                </div>
+                <span class="border-top" style="color: white"></span>
+                <div class="card-header">Totales</div>        
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-body" style="background-color: #fd7e14;">
+                  <p class="card-text">Gastos mensuales</p>
+                </div>
+                <span class="border-top" style="color: white"></span>
+                <div class="card-header">Mensuales</div>                
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <p class="card-text">Productos</p>
+                </div>
+                <span class="border-top" style="color: white"></span>
+                <div class="card-header">Estadisticas</div>                
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     {% endfilter %}
 
 

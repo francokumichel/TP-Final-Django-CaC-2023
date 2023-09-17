@@ -14,3 +14,18 @@ body{
     font-family: Arial, Helvetica, sans-serif;
    
 }
+
+footer{
+    justify-content: center;
+    text-align: center;
+}
+
+estilo_1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    color: white;
+}
+
+.gts{
+    color: coral;
+}

@@ -26,6 +26,8 @@ body{
 }
 footer {
     background-color: gray;
+    justify-content: center;
+    text-align: center;
 }
 
 h2 {
