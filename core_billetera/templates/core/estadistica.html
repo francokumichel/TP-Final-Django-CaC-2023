@@ -8,10 +8,18 @@
 {% block title %}Billetra GP15{% endblock %}
 {% block section_title %}{% endblock %}
 {% block content %}
-    <h2>Estadisticas</h2>
+    <h2 style="color:white">Estadisticas</h2>
     {% filter lower %}
-    <p>Día de la fecha: {{ fecha }}</p>
-    <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
+    <div class="container text-center">
+        <div class="row align-items-start estilo_1">
+          <div class="col">
+            <p>Fecha: {{ fecha }}</p>
+          </div>
+          <div class="col">
+            <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
+          </div>
+        </div>
+    </div>
     {% endfilter %}
 
 

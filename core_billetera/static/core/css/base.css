@@ -1,26 +1,59 @@
-:root{
-    --color-principal: #ececec;
-    --color-secundario: #142d4c;
-    --color-terciario: #385170;
-
-
-}
-
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+
+:root{
+    --color-principal: #ececec;
+    --color-secundario: #142d4c;
+    --color-terciario: #385170;
+
+}
+#Genera{
+    text-align: center;
+    background-color: lightcyan;
+    border-radius: 10%;
+    border: solid blue;
+}
+
+h2{
+    color: white;
+}
 body{
     background-color: var(--color-principal);
     color: var(--color-secundario);
     font-family: 'Roboto', sans-serif;
    
 }
-footer {
+footer{
     color: white;
     background-color: var(--color-secundario);
     justify-content: center;
     text-align: center;
 }
+
+#completo{
+    background-color: pink; /* Fondo transparente */
+    border: 1px solid #eb8ce6; /* Borde con relieve */
+    border-radius: 10px; /* Radio de borde */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */   
+}
+
+#sidebar {
+    background-color: transparent; /* Fondo transparente */
+    border: 1px solid #ccc; /* Borde con relieve */
+    border-radius: 10px; /* Radio de borde */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */
+  }
+  
+  /* Estilos para los enlaces en el sidebar */
+  #sidebar a {
+    color: #333; /* Color de texto */ 
+  }
+  
+  /* Estilos para los enlaces activos en el sidebar */
+  #sidebar a.active {
+    color: #007bff; /* Color de texto para enlace activo */
+  }

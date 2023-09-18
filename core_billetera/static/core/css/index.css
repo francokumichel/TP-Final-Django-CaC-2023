@@ -15,6 +15,10 @@ body{
    
 }
 
+h2{
+    text-align: center;
+}
+
 footer{
     justify-content: center;
     text-align: center;
