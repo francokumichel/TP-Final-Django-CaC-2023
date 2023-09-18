@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/inicio.css' %}">
+{%endblock%}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary px-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">AhorraYa</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#diferenciales">Diferenciales</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+            <button type="button" class="btn btn-outline-success mx-2">Iniciar sesión</button>
+            <button type="button" class="btn btn-outline-primary">Crear cuenta</button>
+        </div>
+      </div>
+    </div>
+</nav>
+
+<div id="inicio" class="container-fluid banner d-flex flex-column align-items-center justify-content-center">
+    <h1>¡AhorraYa: Tu Compañero de Compras Inteligentes!</h1>
+    <h1>Ahorra Más, Gasta Menos, Viví Mejor.</h1>
+    <p class="text-center pt-2">Descubre cómo AhorraYa puede ayudarte a ahorrar dinero y hacer compras más inteligentes. <br>
+        Regístrate en minutos y aprovecha descuentos exclusivos en tus compras diarias</p>
+    
+    <button type="button" class="btn btn-primary">¡Crea tu cuenta ahora!</button>
+</div>
+
+<section id="diferenciales" class="container diferenciales mt-4 d-flex flex-column justify-content-center align-items-center ">
+    <h1>¿Qué podes hacer con tu cuenta de AhorraYa?</h1>
+    <div class="row row-cols-1 row-cols-md-3 mt-3 mb-5">
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Ahorro de Dinero</h5>
+              <p class="card-text">Maximiza tus descuentos y ahorra dinero en cada compra utilizando las tarjetas de crédito adecuadas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Compras Inteligentes</h5>
+              <p class="card-text">Recibe sugerencias instantáneas sobre la tarjeta de crédito que ofrece los mejores descuentos en función de tus compras actuales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Control Financiero</h5>
+              <p class="card-text">Lleva un registro de tus compras, analiza tus gastos y toma decisiones financieras más informadas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+{% endblock %}

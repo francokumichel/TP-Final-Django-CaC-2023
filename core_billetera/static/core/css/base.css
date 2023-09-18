@@ -1,39 +1,26 @@
+:root{
+    --color-principal: #ececec;
+    --color-secundario: #142d4c;
+    --color-terciario: #385170;
+
+
+}
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-header {
-    display: block;
-    margin: auto;
-    background-color: coral;
-    text-align: center;
-    color: white;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 body{
-    display: block;
-    margin: auto;
-    /*background: url(../IMG/IMG5.jpg) no-repeat;*/
-    background: url(../img/Segunda.jpg) no-repeat;
-    background-color: aqua;
-    background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+    font-family: 'Roboto', sans-serif;
    
 }
 footer {
-    background-color: gray;
+    color: white;
+    background-color: var(--color-secundario);
     justify-content: center;
     text-align: center;
-}
-
-h2 {
-
-    background-color: blue;
-    text-align: center;
-    color: white;
-
 }

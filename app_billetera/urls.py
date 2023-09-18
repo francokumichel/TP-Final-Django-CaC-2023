@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gp15_billetera/', include('core_billetera.urls')),
+    path('', include('core_billetera.urls')),
 ]

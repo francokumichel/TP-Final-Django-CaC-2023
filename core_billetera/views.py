@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from datetime import datetime
 import getpass
 
+
+def inicio(request):
+    return render(request, "core/inicio.html")
+
 def index(request):
     usuario=getpass.getuser
     context = {
