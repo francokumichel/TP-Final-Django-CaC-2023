@@ -1,27 +1,43 @@
-{% extends "core/base.html" %}
+{% extends "./base.html" %}
 {% load static %}
 
 {% block extra_css%}
-    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/form.css' %}">
 {%endblock%}
 
 {% block title %}Billetra GP15{% endblock %}
 {% block section_title %}{% endblock %}
-{% block content %}
-    <h2 style="color:white">Medios de Pago</h2>
-    {% filter lower %}
-        <div class="container text-center">
-            <div class="row align-items-start estilo_1">
-            <div class="col">
-                <p>Fecha: {{ fecha }}</p>
-            </div>
-            <div class="col">
-                <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
-            </div>
-            </div>
-        </div>
-    {% endfilter %}
+<div class="container">
+        {% block content %}
+            <h2 style="color:white">Medios de Pago</h2>
+            {% filter lower %}
+                <div class="container text-center">
+                    <div class="row align-items-start estilo_1">
+                    <div class="col">
+                        <p>Fecha: {{ fecha }}</p>
+                    </div>
+                    <div class="col">
+                        <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
+                    </div>
+                    </div>
+                </div>
+            {% endfilter %}
 
-
-
-{% endblock %}
+            <div id="form">
+                <div class="container text-center">
+                    <div class="row align-items-start">
+                        <div class="col" style="color: white;">
+                            {{form}}
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="d-inline-flex gap-1">
+                    <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</a>
+                    <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
+                    <a class="btn btn-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>
+                </p>
+                
+            </div>
+        {% endblock %}
+</div>

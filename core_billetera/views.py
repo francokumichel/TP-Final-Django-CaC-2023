@@ -62,6 +62,13 @@ def medioPago(request):
    #        correo = contacto_form.cleaned_data['correo']
    #         # Realiza las acciones necesarias con los datos
     #else:
+    usuario=getpass.getuser
+    context = {
+        'nombre_usuario': usuario,
+        'fecha': datetime.now(),
+        'es_instructor': True,
+        'form': medioPago_form,
+    }
     medioPago_form = medioPagoForm()
     
-    return render(request, './core/form.html', {'form': medioPago_form})
+    return render(request, './core/mdp.html', context)

@@ -13,10 +13,10 @@
         {% filter lower %}
         <div class="container text-center">
             <div class="row align-items-start estilo_1">
-              <div class="col">
+              <div class="col" >
                 <p>Fecha: {{ fecha }}</p>
               </div>
-              <div class="col">
+              <div class="col" >
                 <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
               </div>
             </div>
@@ -27,32 +27,33 @@
               <div class="col">
                 <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-body">
-                      <p class="card-text">Totales en pesos de gastos</p>
+                      <p class="card-text" style="color: white">Totales en pesos de gastos</p>
                     </div>
                     <span class="border-top" style="color: white"></span>
-                    <div class="card-header">Totales</div>        
+                    <div class="card-header" style="color: white">Totales</div>        
                 </div>
               </div>
               <div class="col">
                 <div class="card text-bg-info mb-3" style="max-width: 18rem;">
                     <div class="card-body" style="background-color: #fd7e14;">
-                      <p class="card-text">Gastos mensuales</p>
+                      <p class="card-text" style="color: white">Gastos mensuales</p>
                     </div>
                     <span class="border-top" style="color: white"></span>
-                    <div class="card-header">Mensuales</div>                
+                    <div class="card-header" style="color: white">Mensuales</div>                
                 </div>
               </div>
               <div class="col">
                 <div class="card text-bg-info mb-3" style="max-width: 18rem;">
                     <div class="card-body">
-                      <p class="card-text">Productos</p>
+                      <p class="card-text" style="color: white">Productos</p>
                     </div>
                     <span class="border-top" style="color: white"></span>
-                    <div class="card-header">Estadisticas</div>                
+                    <div class="card-header" style="color: white">Estadisticas</div>                
                 </div>
               </div>
             </div>
           </div>
-        
+
     {% endblock %}
+    <br><br>
 </div>

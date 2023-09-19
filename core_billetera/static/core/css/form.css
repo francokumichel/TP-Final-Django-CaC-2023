@@ -7,12 +7,15 @@
 
 #form{
     width: 450px;
+    color: white;
     margin: auto;
     background: rgba(0, 0, 0, 0.4);
     padding: 10px 20px;
     box-sizing: border-box;
     margin-top: 20px;
     border-radius: 10px;
+    text-align: left;
+    
 }
 
 h2{
