@@ -5,23 +5,62 @@
     <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
 {%endblock%}
 
-{% block title %}Billetra GP15{% endblock %}
-{% block section_title %}{% endblock %}
+<div class="container">
+    {% block title %}Billetra GP15{% endblock %}
+    {% block section_title %}{% endblock %}
+</div>
 {% block content %}
-    <h2 style="color:white">Supermercados</h2>
-    {% filter lower %}
-    <div class="container text-center">
-        <div class="row align-items-start estilo_1">
-          <div class="col">
-            <p>Fecha: {{ fecha }}</p>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong class="text-dark">{{ message }}</strong>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <h2>Supermercados</h2>
+      <div class="card">
+          <div class="card-body">
+                  <form method="post" action="{% url 'supermercados' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                  </form>
+                  <div class="d-grip gap-2">
+                      <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                  </div>
+              </form>
           </div>
-          <div class="col">
-            <p>Usuario logueado como: <b>{{ nombre_usuario }}</b></p>
-          </div>
-        </div>
-    </div>
-    {% endfilter %}
-
-
-
+      </div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+      <h1>Listado de Supermercados</h1>
+      <div class="table-responsive py-2">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th>Dirección</th>
+                      <th colspan="2">Opciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for c in cursos %}
+                  <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{c.codigo}}</td>
+                      <td>{{c.nombre}}</td>
+                      <td>{{c.creditos}}</td>
+                      <td><a href="edicionCurso/{{c.codigo}}" class="btn btn-info">Editar</a></td>
+                      <td><a href="eliminarCurso/{{c.codigo}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
 {% endblock %}

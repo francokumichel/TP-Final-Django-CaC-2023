@@ -26,5 +26,11 @@ h2{
     margin-bottom: 20px;
 }
 
+.ver1{
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: red;
+
+}
 
 
