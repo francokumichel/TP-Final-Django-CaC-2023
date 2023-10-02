@@ -1,5 +1,9 @@
 from django import forms
 from django.forms import widgets
+from django.contrib import messages
+from django.http import HttpResponse
+from django.core.exceptions import ValidationError
+
 
 MES_CHOICES = [
         ('01', 'Enero'),
@@ -58,6 +62,17 @@ class supermercadoForm(forms.Form):
     domicilio=forms.CharField(label='Domicilio', max_length=50, required=True,
                             widget=forms.TextInput(attrs={'placeholder': 'Domicilio Supermercado'}))
     
+    def clean(self):
+        
+        # Este if simula una busqueda en la base de datos
+        if self.cleaned_data["nombre"] == "Carlos":
+            #messages.info(request, "Consulta enviada con éxito")
+            raise ValidationError("El usuario Carlos Lopez ya existe")
+        
+        # Si el usuario no existe lo damos de alta
+
+        return self.cleaned_data
+    
   
 #CRUD de Tabla MasterPago detalla formas de cobro    
 class maestroPagosForm(forms.Form):
@@ -71,15 +86,23 @@ class maestroPagosForm(forms.Form):
             choices=[
             (w_tipo, w_tipo) for w_tipo in w_nombreTC
             ]),      
+        
+#        def clean_edad(self):
+#            if self.cleaned_data["edad"] < 18:
+#                raise ValidationError("El usuario no puede tener menos de 18 años")
+#        
+#            return self.cleaned_data["edad"]
     
     
 class promoSuper(forms.Form):
+#    eleccionSuper= forms.CharField(label='Selecciona Super', widget=forms.Select(choices=w_supermercados))
+#    eleccionTC= forms.CharField(label='Selecciona TC', widget=forms.Select(choices=w_nombreTC))
     eleccionSuper= forms.CharField(label='Selecciona Super', widget=forms.Select(choices=w_supermercados))
     eleccionTC= forms.CharField(label='Selecciona TC', widget=forms.Select(choices=w_nombreTC))
     
 class promoSuper1(forms.Form):
-    eleccionSuper1= forms.CharField(label=' Super', widget=forms.Select(choices=w_supermercados))
-    eleccionTC1= forms.CharField(label=' TC', widget=forms.Select(choices=w_nombreTC))    
+    eleccionSuper1= forms.CharField(label=' Super')
+    eleccionTC1= forms.CharField(label=' TC')    
         
     
 # Pro favor no borrar hasta ver terminado el TP    

@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1 style="text-align: center;">Pago Optimo</h1>
+        <h1 style="text-align: center">Pago Optimo</h1>
         <h2>{% block section_title %} {% endblock %}</h2>
     </header>
 
@@ -42,7 +42,7 @@
               </div>
           </nav>
           <!-- Contenido principal -->
-          <main  class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div  class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div id="completo" class="container" >
               <div id="completo" class="row">
                 <main>
@@ -50,14 +50,46 @@
                 </main>
               </div>
             </div>
-          </main>
+          </div>
       </div>
   </div> 
 
   <footer>
         {% include "core/footer.html" %}
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!--
+  <script src="{% static '/core/js/message.js' %}"></script>
+  -->
+  <script>
+    {% if messages %}
+        {% for message in messages %}
+            var titulo = "{{ message.tags }}";
+            var text = "{{ message.icon }}";
+            var icon = "";
+
+            if (titulo === "success") {
+                icon = "success";
+            } else if (titulo === "warning") {
+                icon = "warning";
+            } else if (titulo === "error") {
+                icon = "error";
+            } else {
+                icon = "info";
+            }
+
+            Swal.fire({
+                'title': titulo,
+                'text': text,
+                'icon': icon
+            });
+        {% endfor %}
+    {% endif %}
+</script>
+
 
 </body>
 </html>
