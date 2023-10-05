@@ -26,6 +26,13 @@ w_supermercados = [
         # Agrega más meses aquí
     ]
 
+
+supermercados_dict = {
+    '01': 'Disco',
+    '02': 'Jumbo',
+    '03': 'Coto',
+}
+
 w_nombreTC = [
         ('01', 'Visa'),
         ('02', 'Master'),
@@ -72,7 +79,9 @@ class supermercadoForm(forms.Form):
         # Si el usuario no existe lo damos de alta
 
         return self.cleaned_data
-    
+
+
+   
   
 #CRUD de Tabla MasterPago detalla formas de cobro    
 class maestroPagosForm(forms.Form):
@@ -102,7 +111,14 @@ class promoSuper(forms.Form):
     
 class promoSuper1(forms.Form):
     eleccionSuper1= forms.CharField(label=' Super')
-    eleccionTC1= forms.CharField(label=' TC')    
+    eleccionTC1= forms.CharField(label=' TC')  
+    
+class cobro_Form(forms.Form):
+    pago_name = forms.CharField(label='Nombre de Pago',
+                             max_length=30,
+                             required=True,
+                             widget=forms.TextInput(attrs={'placeholder': 'Nombre Forma de Pago'}))
+       
         
     
 # Pro favor no borrar hasta ver terminado el TP    

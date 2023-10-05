@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+
+{%endblock%}
+
+<div class="container">
+    {% block title %}Billetra GP15{% endblock %}
+    {% block section_title %}{% endblock %}
+</div>
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Edito Cobros</h2>
+        <div class="card">
+            <div class="card-body">
+
+                <form method="post" action="{% url 'editarCobro' curso.id %}">
+                    {% csrf_token %}
+
+                        <input type="text" id="txtpago_id" value="{{curso.id}}" readonly>
+                        <input type="text" id="txtpago_name" value="{{curso.pago_name}}">
+
+
+                    <div class="form-group">
+                        <td><a href="/editarCobro/<curso.id>" class="btn btn-info">Editar</a></td>
+                        <!--
+                        <button type="submit"  class="btn btn-success btn-block text-white">Guardar</button>
+                        -->
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='../../static/core/js/message.js'></script>
+{% endblock %}
