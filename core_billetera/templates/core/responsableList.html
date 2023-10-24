@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/alta_super.css' %}">
+{%endblock%}
+
+{% block title %}Lista de Responsable View{% endblock %}
+{% block section_title %}Lista de Super View{% endblock %}
+{% block content %}
+    <h3>Datos de los nuevos Responsables</h3>
+    {% if object_list %}
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo Electrónico</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in object_list %}
+                    <tr>
+                        <td>{{ article.persona_name }}</td>
+                        <td>{{ article.persona_apellido }}</td>
+                        <td>{{ article.persona_mail }}</td>
+                        <td>{{ article.persona_telefono }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>No hay registros de Responsables</h1>
+    {% endif %}
+{% endblock %}

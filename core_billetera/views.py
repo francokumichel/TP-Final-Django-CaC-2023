@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponse
 from datetime import datetime
 import getpass
 from .forms import medioPagoForm, supermercadoForm, maestroPagosForm, promoSuper, cobro_Form, promoSuper1
-from .models import Supermercado, MedioPago, TipoCobro
+from .models import Supermercado, MedioPago, TipoCobro, Super, Responsable
+from django.views.generic.edit import CreateView, FormView
+from django.views.generic.list import ListView
+from django.db import IntegrityError
+from django.utils import timezone
 
 def inicio(request):
     return render(request, "core/inicio.html")
@@ -56,7 +60,7 @@ def super(request):
         'nombre_usuario': usuario,
         'fecha': datetime.now(),
         'es_instructor': True,
-        'cursos': w_supermercados,
+        #'cursos': w_supermercados,
     }
     return render(request, "core/super.html", context)
 
@@ -258,3 +262,42 @@ def eliminarCobro(request,id):
  #   }
 #
 #    return render(request, "core/contacto.html", context)
+
+
+# Generacion de VIEW
+class SuperCreateView(CreateView):
+    model = Super
+    #context_object_name = 'alta_docente_form'
+    template_name = 'core/Alta_Super.html'
+    success_url = 'superList'
+    # form_class = AltaDocenteModelForm
+    fields = '__all__'
+
+class SuperListView(ListView):
+    model = Super
+    template_name = 'core/superList.html'
+    context_object_name = 'lista_super'
+    fields = '__all__'
+    #fields=['super', 'persona.apellido', 'responsable.mail']
+    
+class ResponsableCreateView(CreateView):
+    model = Responsable
+    #context_object_name = 'alta_docente_form'
+    template_name = 'core/responsable.html'
+    #success_url = 'core/responsable'
+    success_url = reverse_lazy('responsableList')
+    # form_class = AltaDocenteModelForm
+    fields = '__all__'
+    
+class ResponsableListView(ListView):
+    model = Responsable
+    template_name = 'core/responsableList.html'
+    context_object_name = 'lista_objetos'
+    #context_object_name = 'context'
+    #paginate_by = 100  # if pagination is desired
+    #fields='__all__'
+
+    #def get_context_data(self, **kwargs):
+    #    context = super().get_context_data(**kwargs)
+    #    context["now"] = timezone.now()
+    #    return context

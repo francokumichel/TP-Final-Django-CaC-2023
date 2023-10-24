@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/alta_super.css' %}">
+{%endblock%}
+
+{% block title %}Alta de Super View{% endblock %}
+{% block section_title %}Alta de Super View{% endblock %}
+{% block content %}
+    <h3>Datos del nuevo Supermercado</h3>
+    <form method="post" action="{% url 'AltaSuper' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+{% endblock %}

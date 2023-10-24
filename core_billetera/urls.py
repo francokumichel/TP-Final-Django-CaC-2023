@@ -15,6 +15,13 @@ urlpatterns = [
     path('tipo_cobro', views.tipo_cobro, name='tipo_cobro'),
     path('edicionCobro/<id>', views.edicionCobro, name='edicionCobro'),
     path('editarCobro/<id>', views.editarCobro, name='editarCobro'),
-    path('eliminarCobro/<id>', views.eliminarCobro, name='eliminarCobro')
+    path('eliminarCobro/<id>', views.eliminarCobro, name='eliminarCobro'),
+    
+    path('AltaSuper', views.SuperCreateView.as_view(), name="AltaSuper"),
+    path('superList', views.SuperListView.as_view(), name="superList"),
+    path('responsable', views.ResponsableCreateView.as_view(), name="responsable"),   
+    path('responsableList', views.ResponsableListView.as_view(), name="responsableList"), 
+    #path('docentes/listado', views.DocenteListView.as_view(), name="docentes_listado"),
+    
 
 ]

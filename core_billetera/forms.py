@@ -3,6 +3,7 @@ from django.forms import widgets
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.exceptions import ValidationError
+from .models import Super
 
 
 MES_CHOICES = [
@@ -135,6 +136,27 @@ class cobro_Form(forms.Form):
 #       (w_nombres, w_nombres) for w_nombres in w_nombreTC
 #       ])      
          
-   
+class altaSuperModelForm(forms.ModelForm):
+    class Meta:
+        model = Super
+        fields = '__all__'
+        widgets={
+            'super_name': forms.Textarea(attrs={'col':20, 'rows':20})
+        }
+
+        
+
+# Esto es para ver que pasa si funciona o no
+    def clean_cuit(self):
+        cuit = self.cuit.strip() # Eliminar espacios en blanco al principio y al final
+
+        if not cuit.isdigit():
+            raise ValidationError("El CUIT debe contener solo dígitos.")
+
+        if len(cuit) != 11:
+            raise ValidationError("El CUIT debe tener 11 dígitos.")
+        
+        self.changed_data['cuit'] = cuit
+        return self.changed_data['cuit']
   
 
