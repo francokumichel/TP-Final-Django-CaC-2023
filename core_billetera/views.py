@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from datetime import datetime
 import getpass
 from .forms import medioPagoForm, supermercadoForm, maestroPagosForm, promoSuper, cobro_Form, promoSuper1
-from .models import Supermercado, MedioPago, TipoCobro, Super, Responsable
+from .models import Supermercado, MedioPago, TipoCobro, Super, Responsable, TCU, Usuario
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.list import ListView
 from django.db import IntegrityError
@@ -263,6 +263,31 @@ def eliminarCobro(request,id):
 #
 #    return render(request, "core/contacto.html", context)
 
+##### Ver Tarjetas de Credito para Usuario
+def usuarioTC(request, id):
+    usuario_tc = Usuario.objects.get(id=id)
+
+    if request.method == "POST":
+        # Lógica para procesar datos del formulario POST
+        # w_pago_name = request.POST.get('txtpago_name')
+
+        # Supongo que deseas obtener los objetos relacionados del campo ManyToMany 'usoTarjetas'
+        tc = usuario_tc.usoTarjetas.all()
+
+        context = {
+            'fecha': datetime.now(),
+            'es_instructor': True,
+            'form': usuario_tc,
+            'tc': tc  # 'tc' ahora es una lista de objetos relacionados
+        }
+        return render(request, "core/usuarioTC.html", context)
+
+    context = {
+        'fecha': datetime.now(),
+        'es_instructor': True,
+        'form': usuario_tc
+    }
+    return render(request, "core/usuarioTC.html", context)
 
 # Generacion de VIEW
 class SuperCreateView(CreateView):
@@ -297,7 +322,46 @@ class ResponsableListView(ListView):
     #paginate_by = 100  # if pagination is desired
     #fields='__all__'
 
+class TCUCreateView(CreateView):
+    model = TCU
+    #context_object_name = 'alta_docente_form'
+    template_name = 'core/tcu.html'
+    #success_url = 'core/responsable'
+    success_url = reverse_lazy('tcuList')
+    # form_class = AltaDocenteModelForm
+    fields = '__all__'
+    
+class TCUListView(ListView):
+    model = TCU
+    template_name = 'core/tcuList.html'
+    context_object_name = 'lista_objetos'
+    #context_object_name = 'context'
+    #paginate_by = 100  # if pagination is desired
+    #fields='__all__'    
+
     #def get_context_data(self, **kwargs):
     #    context = super().get_context_data(**kwargs)
     #    context["now"] = timezone.now()
     #    return context
+    
+class UsuarioCreateView(CreateView):
+    model = Usuario
+    #context_object_name = 'alta_docente_form'
+    template_name = 'core/usuario.html'
+    #success_url = 'core/responsable'
+    success_url = reverse_lazy('usuarioList')
+    # form_class = AltaDocenteModelForm
+    fields = '__all__'
+    
+class UsuarioListView(ListView):
+    model = Usuario
+    template_name = 'core/usuarioList.html'
+    #tcus_utilizados = TCU.TCU_tarjeta.all()
+    #lista_objetos = Usuario.persona_name, Usuario.persona_apellido, Usuario.persona_mail, tcus_utilizados 
+    context_object_name = 'lista_objetos'
+    #context_object_name = 'context'
+    #paginate_by = 100  # if pagination is desired
+    #fields= Usuario.persona_name, Usuario.persona_apellido, Usuario.persona_mail, tcus_utilizados        
+    
+    
+    

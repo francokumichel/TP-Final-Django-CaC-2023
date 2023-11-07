@@ -48,14 +48,53 @@ footer{
     border-radius: 10px; /* Radio de borde */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */
     opacity: 0.8;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 20px;
+    z-index: 1;    
   }
   
   /* Estilos para los enlaces en el sidebar */
 #sidebar a {
-    color: #333; /* Color de texto */ 
+    color: black /* Color de texto */ 
   }
   
   /* Estilos para los enlaces activos en el sidebar */
+  /*
 #sidebar a.active {
-    color: #007bff; /* Color de texto para enlace activo */
+    color: #007bff; *//* Color de texto para enlace activo */ /*
   }
+*/
+.menu-item:hover {
+    cursor: pointer;
+}
+
+/* Esto esta copiado */
+
+/* Estilo para la barra lateral (sidebar) */
+
+
+/* Estilo para los elementos del menú */
+.nav-item {
+    margin-bottom: 10px;
+}
+
+/* Estilo para los enlaces del menú */
+.nav-link {
+    color: #333; /* Color del texto del enlace */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+}
+
+/* Estilo para los enlaces activos (página actual) */
+.nav-link.active {
+    background-color: #007bff; /* Fondo azul para enlace activo */
+    color: #fff; /* Color del texto del enlace activo */
+}
+
+/* Estilo para cambiar el cursor al pasar sobre elementos del menú */
+.cursor-pointer:hover {
+    cursor: pointer;
+}

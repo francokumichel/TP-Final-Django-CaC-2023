@@ -4,13 +4,15 @@
     <link rel="stylesheet" href="{% static 'core/css/alta_super.css' %}">
 {%endblock%}
 
-{% block title %}Alta de Super View{% endblock %}
+{% block title %}Alta de Responsable View{% endblock %}
 {% block section_title %}Alta de Super View{% endblock %}
 {% block content %}
-    <h3>Datos del nuevo Supermercado</h3>
-    <form method="post" action="{% url 'AltaSuper' %}">
+    <h3>Datos del nuevo Responsable</h3>
+    <form method="post" action="{% url 'responsable' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        <fieldset class="form-group module">
+            {{ form.as_ul }}
+        </fieldset>
         <input type="submit" class="btn btn-info">
     </form>
 {% endblock %}

@@ -25,6 +25,8 @@
                         <td>{{ article.persona_apellido }}</td>
                         <td>{{ article.persona_mail }}</td>
                         <td>{{ article.persona_telefono }}</td>
+                        <td><a href="edicionCurso/{{c.id}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarCurso/{{c.id}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

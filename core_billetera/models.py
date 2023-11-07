@@ -21,11 +21,11 @@ class Super(Supermercado):
 
     
 class Persona(models.Model):
-    persona_name = models.CharField(max_length=50, verbose_name='Nombre')
-    persona_apellido = models.CharField(max_length=50, verbose_name='Apellido')    
-    persona_direccion = models.CharField(max_length=50, verbose_name='Direccion')
-    persona_mail = models.EmailField(max_length=50, unique=True, verbose_name='Mail Personal')
-    persona_telefono = models.CharField(max_length=50, verbose_name='Telefono Personal')    
+    persona_name      = models.CharField(max_length=50, verbose_name='Nombre       ')
+    persona_apellido  = models.CharField(max_length=50, verbose_name='Apellido     ')    
+    persona_direccion = models.CharField(max_length=50, verbose_name='Direccion    ')
+    persona_mail      = models.EmailField(max_length=50, unique=True, verbose_name='Mail Personal')
+    persona_telefono  = models.CharField(max_length=50, verbose_name='Telefono Personal')    
     
     class Meta:
         abstract = True  
@@ -39,9 +39,6 @@ class Responsable(Persona):
         linea=self.persona_name, self.persona_apellido, self.persona_mail, self.super
         return self.linea 
     
-class Usuario(Persona):
-        pass
-    
 class MedioPago(models.Model):
     mp_tipo = models.CharField(max_length=30, verbose_name='Tipo de Pago')
     mp_nombre = models.CharField(max_length=30, verbose_name='Nombre de Pago')
@@ -49,6 +46,28 @@ class MedioPago(models.Model):
     mp_codigo = models.CharField(max_length=30, verbose_name='Codigo')
     mp_fvto = models.CharField(max_length=4, verbose_name='Vto') 
     
+class TCU(models.Model):
+    TCU_banco = models.CharField(max_length=30, verbose_name='Nombre de Banco')
+    TCU_tarjeta = models.CharField(max_length=30, verbose_name='Tarjetas')
+    
+    def __str__(self):
+        
+        return f'{self.TCU_banco} {self.TCU_tarjeta}'
+    
+    
+class Usuario(Persona):
+    #usoTarjetas= models.ManyToManyField(TCU, on_delete=models.CASCADE)
+    usoTarjetas= models.ManyToManyField(TCU)
+    
+    def tarjetas(self):
+        return f'{self.usoTarjetas}'
+    
+    def __str__(self):
+        
+        return f'{self.persona_name} {self.persona_apellido}'
+    
+class Compras(models.Model):
+    cliente=models.ManyToManyField(Usuario)    
 class Compra(models.Model):
     mp_fvto = models.DateField()
     mp_ID_Super = models.IntegerField()

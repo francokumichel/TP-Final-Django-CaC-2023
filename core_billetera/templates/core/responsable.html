@@ -10,7 +10,11 @@
     <h3>Datos del nuevo Responsable</h3>
     <form method="post" action="{% url 'responsable' %}">
         {% csrf_token %}
-        {{ form.as_ul }}
-        <input type="submit">
+        <fieldset class="module aligned">
+            <div class="form-row">  {# Opcional: Puedes usar un div con la clase form-group para mejorar el diseño. #}
+                {{ form.as_p}}
+            </div>
+        </fieldset>
+        <input type="submit" class="btn btn-info">
     </form>
 {% endblock %}

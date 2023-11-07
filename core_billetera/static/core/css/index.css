@@ -11,7 +11,9 @@ body{
     background: url(../img/Segunda.jpg) no-repeat;
     background-color: aqua;
     background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family: 'Inconsolata', monospace;
+
    
 }
 
@@ -33,3 +35,4 @@ estilo_1{
 .gts{
     color: coral;
 }
+

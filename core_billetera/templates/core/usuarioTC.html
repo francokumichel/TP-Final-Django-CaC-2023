@@ -1,0 +1,59 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+
+{%endblock%}
+
+<div class="container">
+    {% block title %}Billetra GP15{% endblock %}
+    {% block section_title %}{% endblock %}
+</div>
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+
+      <h2>Ver detalles TC</h2>
+      <div class="card">
+          <div class="card-body">
+                  <form method="post" action="{% url 'usuarioTC' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grip gap-2">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+
+                </form>
+              </form>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+      <h1>Listado Tarjetas de Credito</h1>
+      <div class="table-responsive py-2">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Código</th>
+                      <th>Tipo Cobro</th>
+                      <th colspan="2">Opciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for c in tc %}
+                  <tr>
+                       
+                      <td>{{forloop.counter}}</td>
+                      <td>{{c.TC_banco}}</td>
+                      <td>{{c.TCU_tarjeta}}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<script src='../../static/core/js/message.js'></script>
+{% endblock %}

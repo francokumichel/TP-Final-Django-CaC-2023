@@ -13,3 +13,25 @@ h2{
     text-align: center;
     color: rgb(255, 0, 55);
 }
+
+fieldset {
+    margin: 0;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    border-top: 1px solid var(--hairline-color);
+}
+
+.module {
+    border: none;
+    margin-bottom: 30px;
+    background: var(--body-bg);
+}
+
+.form-group p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+}
+
+.form-group label::after {
+    content: ": "; /* Agrega ":" después del label */
+}
