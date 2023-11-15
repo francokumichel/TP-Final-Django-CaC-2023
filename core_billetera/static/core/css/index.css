@@ -4,10 +4,20 @@
     box-sizing: border-box;
 }
 
+h2{
+    text-align: center;
+}
+/*
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body{
     display: block;
     margin: auto;
-    /*background: url(../IMG/IMG5.jpg) no-repeat;*/
+    
     background: url(../img/Segunda.jpg) no-repeat;
     background-color: aqua;
     background-size: cover;
@@ -35,4 +45,4 @@ estilo_1{
 .gts{
     color: coral;
 }
-
+*/

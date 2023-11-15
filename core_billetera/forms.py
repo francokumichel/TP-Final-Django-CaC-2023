@@ -6,6 +6,11 @@ from django.core.exceptions import ValidationError
 from .models import Super
 
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nombre de Usuario')
+    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+
 MES_CHOICES = [
         ('01', 'Enero'),
         ('02', 'Febrero'),

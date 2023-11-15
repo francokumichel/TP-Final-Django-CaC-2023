@@ -17,15 +17,34 @@
       <h2>Ver detalles TC</h2>
       <div class="card">
           <div class="card-body">
-                  <form method="post" action="{% url 'usuarioTC' %}">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <div class="d-grip gap-2">
-                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
-                        </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                id
+                            </th>
+                            <th>
+                                nombre
+                            </th>
+                            <th>
+                                apellido
 
-                </form>
-              </form>
+                            </th>
+                            <th>
+                                mail
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ usuario.id}}</td>
+                            <td>{{ usuario.persona_name}}</td>
+                            <td>{{ usuario.persona_apellido}}</td>
+                            <td>{{ usuario.persona_mail}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                    
           </div>
       </div>
   </div>
@@ -44,9 +63,8 @@
               <tbody>
                   {% for c in tc %}
                   <tr>
-                       
                       <td>{{forloop.counter}}</td>
-                      <td>{{c.TC_banco}}</td>
+                      <td>{{c.TCU_banco}}</td>
                       <td>{{c.TCU_tarjeta}}</td>
                   </tr>
                   {% endfor %}

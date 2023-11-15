@@ -12,6 +12,7 @@
         <table class="table table-bordered border-primary">
             <thead>
               <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Mail</th>
@@ -23,13 +24,11 @@
                 {% for nombre_docente in lista_objetos %}           
                     <tr>
 
+                            <td>{{ nombre_docente.id}}</td>
                             <td>{{ nombre_docente.persona_name}}</td>
                             <td>{{ nombre_docente.persona_apellido}}</td>
                             <td>{{ nombre_docente.persona_mail}}</td>
-                            {% for tcu in usuario.usoTarjetas.all %}
-                                 <li>{{ tcu.nombre }}</li> <!-- Suponiendo que 'nombre' es un campo en el modelo TCU -->
-                            {% endfor %}
-                            <td>{{ nombre_docente.Tarjetas}}</td>      
+  
                             <td><a href="usuarioTC/{{nombre_docente.id}}" class="btn btn-info">Ver TC</a></td>                      
                             <td><a href="edicionCurso/{{c.id}}" class="btn btn-info">Editar</a></td>
                             <td><a href="eliminarCurso/{{c.id}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>

@@ -26,14 +26,71 @@ body{
     background-color: var(--color-principal);
     color: var(--color-secundario);
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
    
 }
+
+header, main {
+    padding: 15px;
+}
+
+main {
+    flex: 1;
+}
+
 footer{
     color: white;
-    background-color: var(--color-secundario);
+    background-color: grey;
     justify-content: center;
     text-align: center;
+
 }
+
+header .title {
+    flex: 1;
+}
+
+header h2{
+ color: black;
+ font-weight: 100;
+}
+
+nav {
+    background-color: rgb(200,200,200);
+    padding: 5px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    padding: 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    text-align: center;
+    padding:10px;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: white;
+    
+    font-size: 0.7em;
+
+    transition: 0.2s all;
+
+    display: inline-block;
+    width: 100%;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: black;
+}
+
 
 #completo{
     background-color: pink; /* Fondo transparente */
@@ -80,6 +137,10 @@ footer{
 /* Estilo para los elementos del menú */
 .nav-item {
     margin-bottom: 10px;
+    border-radius: 5px;
+ /*   
+    color: white;    
+    */
 }
 
 /* Estilo para los enlaces del menú */
@@ -88,8 +149,31 @@ footer{
     text-decoration: none; /* Quitar subrayado de los enlaces */
 }
 
+
+
+.nav-item a {
+    text-decoration: none;
+    text-align: center;
+    padding:10px;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: white;
+    
+    font-size: 0.8em;
+
+    transition: 0.2s all;
+
+    display: inline-block;
+    width: 100%;
+}
+
+.nav-item a:hover {
+    background-color: white;
+    color: black;
+}
+
 /* Estilo para los enlaces activos (página actual) */
-.nav-link.active {
+.nav-item.active {
     background-color: #007bff; /* Fondo azul para enlace activo */
     color: #fff; /* Color del texto del enlace activo */
 }
@@ -97,4 +181,28 @@ footer{
 /* Estilo para cambiar el cursor al pasar sobre elementos del menú */
 .cursor-pointer:hover {
     cursor: pointer;
+}
+
+
+.actions{
+    margin-left: 100px;
+}
+header .actions {
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+header .actions a {
+    text-decoration: none;
+    display: inline-block;
+    background-color: darkturquoise;
+    padding: 15px;
+    border-radius: 5px;
+
+    margin: 0 15px;
+
+    color: white;
+
+    transition: 0.2s all;
 }
