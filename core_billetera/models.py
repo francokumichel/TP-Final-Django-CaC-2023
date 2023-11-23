@@ -17,7 +17,8 @@ class Super(Supermercado):
     cuit = models.IntegerField(verbose_name="cuit", unique=True)
     
     def __str__(self):
-        return self.super_name  # Suponiendo que 'nombre' es un campo en tu modelo 'Super'    
+        #return self.super_name  # Suponiendo que 'nombre' es un campo en tu modelo 'Super'  
+        return self.supermercado.super_name  
 
     
 class Persona(models.Model):

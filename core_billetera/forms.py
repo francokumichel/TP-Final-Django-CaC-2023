@@ -116,7 +116,11 @@ class promoSuper(forms.Form):
     eleccionTC= forms.CharField(label='Selecciona TC', widget=forms.Select(choices=w_nombreTC))
     
 class promoSuper1(forms.Form):
-    eleccionSuper1= forms.CharField(label=' Super')
+    eleccionSuper1= forms.CharField(
+        label=' Super',
+        widget=forms.TextInput(attrs={'placeholder': 'supermercado', 'class': 'fondo_rojo'})
+        
+        )
     eleccionTC1= forms.CharField(label=' TC')  
     
 class cobro_Form(forms.Form):
@@ -164,4 +168,8 @@ class altaSuperModelForm(forms.ModelForm):
         self.changed_data['cuit'] = cuit
         return self.changed_data['cuit']
   
-
+# Modifica Supermercado
+class SuperForm(forms.ModelForm):
+    class Meta:
+        model = Super
+        fields = '__all__'

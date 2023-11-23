@@ -5,7 +5,7 @@
 {%endblock%}
 
 {% block title %}Alta de Tarjetas de Credito{% endblock %}
-{% block section_title %}Alta de TCU View{% endblock %}
+{% block section_title %}{% endblock %}
 {% block content %}
     <h3>Datos del nuevo Responsable</h3>
     <form method="post" action="{% url 'tcu' %}">
@@ -13,4 +13,5 @@
         {{ form.as_ul }}
         <input type="submit" class="btn btn-info">
     </form>
+    <p class="version">Alta de TCU View</p>
 {% endblock %}

@@ -5,7 +5,7 @@
 {%endblock%}
 
 {% block title %}Alta de Tarjetas de Credito{% endblock %}
-{% block section_title %}Alta de Usuario View{% endblock %}
+{% block section_title %}{% endblock %}
 {% block content %}
     <h3>Datos del nuevo Usuario</h3>
     <form method="post" action="{% url 'usuario' %}">
@@ -15,4 +15,5 @@
             <input type="submit" class="btn btn-info">
         </fieldset>
     </form>
+    <p class="version">Alta de Usuario View</p>
 {% endblock %}

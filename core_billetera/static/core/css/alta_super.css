@@ -9,7 +9,7 @@ h1{
     text-align: center;
 }
 
-h2{
+h2, h3{
     text-align: center;
     color: rgb(255, 0, 55);
 }
@@ -34,4 +34,19 @@ fieldset {
 
 .form-group label::after {
     content: ": "; /* Agrega ":" después del label */
+}
+
+.version{
+    font-family: 'Courier New', Courier, monospace;
+    font-size:x-small;
+}
+
+.caja{
+    border: 100px;
+    background-color: white;
+
+}
+
+.fondo_rojo {
+    background-color: red;
 }

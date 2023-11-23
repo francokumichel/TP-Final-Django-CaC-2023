@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/css/alta_super.css' %}">
+{% endblock %}
+
+{% block title %}Modificar Supermercado{% endblock %}
+{% block section_title %}{% endblock %}
+{% block content %}
+    <h3>Datos del nuevo Supermercado</h3>
+    <form method="post" action="{% url 'AltaSuper' %}">
+        {% csrf_token %}
+        <div class="card h-100 row g-2">
+            <div class="card-body col-md">
+                <div class="form-floating">
+                    {{ form.as_p }}
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'SuperFormView' form.instance.pk %}" class="btn btn-info">Guardar</a>
+    </form>
+
+    <p class="version">Modificar Supermercado</p>
+
+{% endblock %}

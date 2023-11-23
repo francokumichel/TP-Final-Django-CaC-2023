@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+{%endblock%}
+
+{% block title %}Login{% endblock %}
+{% block section_title %}Login{% endblock %}
+{% block content %}
+    <div class="cuadro">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table class="tabla">
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            </table>
+            
+            <input type="submit" value="login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+{% endblock %}

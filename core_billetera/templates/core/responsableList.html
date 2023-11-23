@@ -5,7 +5,7 @@
 {%endblock%}
 
 {% block title %}Lista de Responsable View{% endblock %}
-{% block section_title %}Lista de Super View{% endblock %}
+{% block section_title %}{% endblock %}
 {% block content %}
     <h3>Datos de los nuevos Responsables</h3>
     {% if object_list %}
@@ -34,4 +34,5 @@
     {% else %}
         <h1>No hay registros de Responsables</h1>
     {% endif %}
+    <p class="version">Responsable List</p>
 {% endblock %}

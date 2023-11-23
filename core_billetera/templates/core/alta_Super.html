@@ -5,12 +5,34 @@
 {%endblock%}
 
 {% block title %}Alta de Super View{% endblock %}
-{% block section_title %}Alta de Super View{% endblock %}
+{% block section_title %}{% endblock %}
 {% block content %}
     <h3>Datos del nuevo Supermercado</h3>
     <form method="post" action="{% url 'AltaSuper' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="card h-100 row g-2">
+            <div class="card-body col-md">
+                <!--
+                <div class="d-flex align-item-center justify-content-center form-floating">
+                -->
+                <div class="form-control login-username">                    
+                        {{ form.as_p }}
+<!--
+                    <div class="form-control login-username">
+                        <input type="text" id="txtCodigo" name="txtCodigo" value="{{form.eleccionSuper1}}" class="form-control" placeholder= "Supermercado"
+                            minlength="6" maxlength="30" required>
+                    </div>
+                    <div class="form-control login-username">
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{form.eleccionTC1}}" class="form-control" placeholder=' TC'
+                            maxlength="20" required>
+                    </div> 
+                    -->
+                
+                </div>
+
+            </div>
+        </div>
         <input type="submit" class="btn btn-info">
     </form>
+    <p class="version">Alta de View Super</p>
 {% endblock %}

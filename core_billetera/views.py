@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from typing import Any
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -9,12 +10,13 @@ from django.contrib import messages
 from django.http import HttpResponse
 from datetime import datetime
 import getpass
-from .forms import medioPagoForm, supermercadoForm, maestroPagosForm, promoSuper, cobro_Form, promoSuper1, LoginForm
+from .forms import medioPagoForm, supermercadoForm, maestroPagosForm, promoSuper, cobro_Form, promoSuper1, LoginForm, SuperForm
 from .models import Supermercado, MedioPago, TipoCobro, Super, Responsable, TCU, Usuario
-from django.views.generic.edit import CreateView, FormView
+from django.views.generic.edit import CreateView, FormView, UpdateView
 from django.views.generic.list import ListView
 from django.db import IntegrityError
 from django.utils import timezone
+from django.http import Http404
 
 
 def inicio(request):
@@ -310,6 +312,7 @@ def usuarioTC(request, id):
 class SuperCreateView(CreateView):
     model = Super
     #context_object_name = 'alta_docente_form'
+    fecha: datetime.now()
     template_name = 'core/Alta_Super.html'
     success_url = 'superList'
     # form_class = AltaDocenteModelForm
@@ -321,7 +324,47 @@ class SuperListView(ListView):
     context_object_name = 'lista_super'
     fields = '__all__'
     #fields=['super', 'persona.apellido', 'responsable.mail']
+
+class SuperFormView(FormView):
+    model = Super
+    #context_object_name = 'alta_docente_form'
+    template_name = 'core/Alta_Super.html'
+    success_url = 'superList'
+    # form_class = AltaDocenteModelForm
+    fields = '__all__'
     
+class SuperUpdateView(UpdateView):
+    model = Super
+    form_class = SuperForm
+    template_name = 'core/SuperFormView.html'  # Ajusta la plantilla según tus necesidades
+    success_url = reverse_lazy('superList')
+
+    #def get_context_data(self, **kwargs):
+    #    return super().get_context_data(**kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy('SuperFormView')  # Ajusta la URL de éxito según tus necesidades
+
+    def get_object(self, queryset=None):
+        try:
+            obj_id = self.kwargs.get('pk')
+            return get_object_or_404(Super, pk=obj_id)
+        except Http404:
+            # Manejar específicamente el caso de que el objeto no se encuentre
+            raise Http404("El objeto no se encontró. Puede agregar un mensaje personalizado aquí si lo desea.")
+        except Exception as e:
+            # Manejar otros errores de manera general
+            raise Http404("Ocurrió un error al obtener el objeto.")
+        
+
+        
+       # obj_id = self.kwargs.get('pk')
+       # print(f"obj_id: {obj_id}")
+       # return get_object_or_404(Super, pk=obj_id)    
+
+
+class EliminarFormView(UpdateView):
+    pass
 class ResponsableCreateView(CreateView):
     model = Responsable
     #context_object_name = 'alta_docente_form'
@@ -383,19 +426,27 @@ class UsuarioListView(ListView):
     #paginate_by = 100  # if pagination is desired
     #fields= Usuario.persona_name, Usuario.persona_apellido, Usuario.persona_mail, tcus_utilizados        
     
-    
-def login_view(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                # Redirigir a la página principal o a donde desees
-                return redirect('home')
-    else:
-        form = LoginForm()
 
-    return render(request, 'login1.html', {'form': form})    
+    
+#def login_view(request):
+#    print(request.method)
+#    if request.method == 'POST':
+#        form = LoginForm(request.POST)
+#        print("paso")
+#        if form.is_valid():
+#            username = form.cleaned_data['username']
+#            password = form.cleaned_data['password']
+#            user = authenticate(request, username=username, password=password)
+#            if user is not None:
+#                login(request, user)
+#                # Redirigir a la página principal o a donde desees
+#                context = {
+#                'fecha': datetime.now(),
+#                'es_instructor': True,
+#                }
+#                return render(request, "core/index.html", context)
+#                #return redirect('index')
+#    else:
+#        form = LoginForm()
+
+#    return render(request, 'core/login.html', {'form': form})    

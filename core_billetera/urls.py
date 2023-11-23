@@ -1,14 +1,14 @@
 from django.urls import path, re_path
 from django.contrib.auth import views as auth_views
 from . import views
-from .views import login_view
+#from .views import login_view
 
 urlpatterns = [
     #path('', views.index, name='inicio'),
     path('po', views.index, name='index'),
     
     path('accounts/login/', auth_views.LoginView.as_view(template_name='./core/login.html'),name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/login/', auth_views.LogoutView.as_view(template_name='./core/login.html'), name='logout'),
     #path('login/', login_view, name='login'),
         
     path('mdp', views.mdp, name='mdp'),
@@ -27,6 +27,9 @@ urlpatterns = [
     
     path('AltaSuper', views.SuperCreateView.as_view(), name="AltaSuper"),
     path('superList', views.SuperListView.as_view(), name="superList"),
+    #path('SuperFormView/<int:pk>', views.SuperFormView.as_view(), name="SuperFormView"),
+    path('SuperFormView/<int:pk>/', views.SuperUpdateView.as_view(), name="SuperFormView"),
+    path('eliminarSuper/<id>', views.EliminarFormView.as_view(), name="eliminarSuper"),
     path('responsable', views.ResponsableCreateView.as_view(), name="responsable"),   
     path('responsableList', views.ResponsableListView.as_view(), name="responsableList"), 
     path('tcu', views.TCUCreateView.as_view(), name="tcu"),   

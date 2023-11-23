@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago Optimo - GP15{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
@@ -10,18 +10,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Onest:wght@500&display=swap" rel="stylesheet">
-
     {% block extra_css%}{%endblock%}
 </head>
 <body>
     <header>
-        <h1 style="text-align: center">Pago Optimo</h1>
-        <h2>{% block section_title %} {% endblock %}</h2>
+
           {% if not user.is_authenticated %}
               <a href="{% url 'login' %}">Login</a>
           {% else %}
-              <div class="actions">            
-                  <h2>Fecha: {{ fecha }}</h2>
+              <div class="actions"> 
+                  {% if fecha %}
+                      <h2>Fecha: {{ fecha }}</h2>
+                  {% else %}
+                      <h2>Fecha: {% now "Y-m-d H:i:s" %}</h2>
+                  {% endif %}
+                  <h1 class="Titulo-ppa">Pago Optimo</h1>
+                  <h2>{% block section_title %} {% endblock %}</h2>
                   <h2>Bienvenido <b>{{user.username}}</b></h2>
                   <a class="logout" href="{% url 'logout' %}">Logout</a>
               </div>
@@ -36,9 +40,23 @@
                       <li class="nav-item cursor-pointer">
                           <a class="nav-link active" href="{% url 'index' %}">Home</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="AltaSuper">View Super</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="superList">List Supermercados</a>
+                      </li>   
+                      <li class="nav-item">
+                        <a class="nav-link" href="responsable">View Responsable</a>
+                      </li> 
+                      <li class="nav-item">
+                        <a class="nav-link" href="responsableList">List Responsable</a>
+                      </li>   
+                      <!--                   
                       <li class="nav-item cursor-pointer">
                           <a class="nav-link" href="medioPago">Medios de Pago</a>
                       </li>
+                      -->
                       <!--
                       <li class="nav-item cursor-pointer">
                           <a class="nav-link" href="supermercados">Supermercados</a>
@@ -53,18 +71,7 @@
                       <li class="nav-item">
                         <a class="nav-link" href="tipo_cobro">Tipo Cobros</a>
                       </li>  
-                      <li class="nav-item">
-                        <a class="nav-link" href="AltaSuper">View Super</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="superList">List Supermercados</a>
-                      </li>   
-                      <li class="nav-item">
-                        <a class="nav-link" href="responsable">View Responsable</a>
-                      </li> 
-                      <li class="nav-item">
-                        <a class="nav-link" href="responsableList">List Responsable</a>
-                      </li>
+
                       <li class="nav-item">
                         <a class="nav-link" href="usuario">Usuario</a>
                       </li>
@@ -79,7 +86,7 @@
           <div  class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div id="completo" class="container" >
               <div class="row">
-                <main>
+                <main class="ppal">
                   {% block content %}{% endblock %}
                 </main>
               </div>
@@ -88,7 +95,7 @@
       </div>
   </div> 
 
-  <footer>
+  <footer id="Final">
       {% include "core/footer.html" %}
   </footer>
 
@@ -98,31 +105,7 @@
   <!--
   <script src="{% static '/core/js/message.js' %}"></script>
   -->  
-  <script>
-    {% if messages %}
-        {% for message in messages %}
-            var titulo = "{{ message.tags }}";
-            var text = "{{ message.icon }}";
-            var icon = "";
 
-            if (titulo === "success") {
-                icon = "success";
-            } else if (titulo === "warning") {
-                icon = "warning";
-            } else if (titulo === "error") {
-                icon = "error";
-            } else {
-                icon = "info";
-            }
-
-            Swal.fire({
-                'title': titulo,
-                'text': text,
-                'icon': icon
-            });
-        {% endfor %}
-    {% endif %}
-  </script>
 
 
 </body>
